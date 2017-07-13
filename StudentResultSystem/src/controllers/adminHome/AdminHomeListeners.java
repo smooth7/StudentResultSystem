@@ -6,9 +6,11 @@ import java.awt.event.ActionListener;
 import views.ConfirmRemark;
 import controllers.lecturerDetailsEntry.SubmitLecturerListener;
 import controllers.moduleDetailsEntry.SubmitModuleListener;
+import controllers.sendNotifications.SendNotificationListener;
 import controllers.studentDetailsEntry.SubmitStudentListener;
-import views.Notifications;
+import views.ViewNotifications;
 import views.RemarkRequest;
+import views.SendNotificationsGUI;
 
 public class AdminHomeListeners {
 	
@@ -23,11 +25,22 @@ public class AdminHomeListeners {
 
 	}
 	
-	public class NotificationsListener implements ActionListener{
+	public class SendNotificationsListener implements ActionListener{
 		
 		public void actionPerformed(ActionEvent e){
 			
-			new Notifications();
+			SendNotificationListener.createGUI();
+			
+		}
+
+
+	}
+	
+	public class ViewNotificationsListener implements ActionListener{
+		
+		public void actionPerformed(ActionEvent e){
+			
+			new ViewNotifications();
 			
 		}
 

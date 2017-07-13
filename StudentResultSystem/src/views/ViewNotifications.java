@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.Font;
 import java.awt.GridLayout;
 
-public class Notifications extends JFrame {
+public class ViewNotifications extends JFrame {
 
 	JLabel labelInformation, labelNotificationsList;
 	DefaultListModel<String> notificationsDefaultList = new DefaultListModel<String>();
@@ -12,7 +12,7 @@ public class Notifications extends JFrame {
 	JScrollPane scroller;
 	JTextArea notificationMessage;
 	
-	public Notifications(){
+	public ViewNotifications(){
 			
 		// Define the size of the frame
 		this.setSize(900, 600);

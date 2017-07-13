@@ -8,7 +8,7 @@ import java.awt.GridLayout;
 
 public class AdminHome extends JFrame {
 
-	JButton buttonRegStudents, buttonRegLecturers, buttonRegModules, buttonViewNotifications, buttonConfirmRequest, buttonRequestRemark;
+	JButton buttonRegStudents, buttonRegLecturers, buttonRegModules, buttonViewNotifications, buttonSendNotifications, buttonConfirmRequest, buttonRequestRemark;
 	JLabel labelSpace;
 	
 	AdminHomeListeners adminHomeListeners = new AdminHomeListeners();
@@ -17,7 +17,7 @@ public class AdminHome extends JFrame {
 			
 		this.setTitle("Admin Home Page");
 		this.setResizable(false);
-		this.setSize(700, 600);
+		this.setSize(700, 700);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
@@ -51,13 +51,21 @@ public class AdminHome extends JFrame {
 		buttonRegModulePanel.add(buttonRegModules);
 		jPanelObject.add(buttonRegModulePanel);
 		
-		JPanel buttonNotificationPanel = new JPanel();
+		JPanel btnSendNotificationPanel = new JPanel();
+		buttonSendNotifications = new JButton("Send Notifications");
+		buttonSendNotifications.setFont(font);
+		AdminHomeListeners.SendNotificationsListener sendNotificationsListener = adminHomeListeners.new SendNotificationsListener();
+		buttonSendNotifications.addActionListener(sendNotificationsListener);
+		btnSendNotificationPanel.add(buttonSendNotifications);
+		jPanelObject.add(btnSendNotificationPanel);
+		
+		JPanel btnViewNotificationPanel = new JPanel();
 		buttonViewNotifications = new JButton("View Notifications");
 		buttonViewNotifications.setFont(font);
-		AdminHomeListeners.NotificationsListener notificationsListener = adminHomeListeners.new NotificationsListener();
-		buttonViewNotifications.addActionListener(notificationsListener);
-		buttonNotificationPanel.add(buttonViewNotifications);
-		jPanelObject.add(buttonNotificationPanel);
+		AdminHomeListeners.ViewNotificationsListener viewNotificationsListener = adminHomeListeners.new ViewNotificationsListener();
+		buttonViewNotifications.addActionListener(viewNotificationsListener);
+		btnViewNotificationPanel.add(buttonViewNotifications);
+		jPanelObject.add(btnViewNotificationPanel);
 		
 		JPanel buttonConfirmRequestPanel = new JPanel();
 		buttonConfirmRequest = new JButton("Confirm student remark request");

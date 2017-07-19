@@ -3,44 +3,20 @@ package controllers.adminHome;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import views.ConfirmRemark;
 import controllers.lecturerDetailsEntry.SubmitLecturerListener;
 import controllers.moduleDetailsEntry.SubmitModuleListener;
-import controllers.sendNotifications.SendNotificationListener;
+import controllers.sendInformation.SendInformationListener;
 import controllers.studentDetailsEntry.SubmitStudentListener;
-import views.ViewNotifications;
-import views.RemarkRequest;
-import views.SendNotificationsGUI;
 
 public class AdminHomeListeners {
 	
-	public class ConfirmRequestListener implements ActionListener{
-		
-		public void actionPerformed(ActionEvent e){
-			
-			new ConfirmRemark();
-			
-		}
-
-
-	}
+	//Listeners for the buttons in the AdminHome page
 	
 	public class SendNotificationsListener implements ActionListener{
 		
 		public void actionPerformed(ActionEvent e){
 			
-			SendNotificationListener.createGUI();
-			
-		}
-
-
-	}
-	
-	public class ViewNotificationsListener implements ActionListener{
-		
-		public void actionPerformed(ActionEvent e){
-			
-			new ViewNotifications();
+			SendInformationListener.createGUI();
 			
 		}
 
@@ -79,17 +55,5 @@ public class AdminHomeListeners {
 
 
 	}
-
-	public class RequestRemarkListener implements ActionListener{
-		
-		public void actionPerformed(ActionEvent e){
-			
-			new RemarkRequest();
-			
-		}
-
-
-	}
-
 
 }

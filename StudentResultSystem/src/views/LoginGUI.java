@@ -6,16 +6,23 @@ import controllers.login.LoginListener;
 import java.awt.Font;
 import java.awt.GridLayout;
 
-public class Login extends JFrame {
+public class LoginGUI extends JFrame {
 
 	JButton buttonSubmit;
-	JTextField textUserId, textPassword;
+	JTextField textPassword;
+	static JTextField textUserId;
 	JLabel labelPassword, labelUserId;
-	JRadioButton radioStudentLogin, radioLecturerLogin, radioAdminLogin;
+	static JRadioButton radioStudentLogin;
+	static JRadioButton radioLecturerLogin;
+	static JRadioButton radioAdminLogin;
 	ButtonGroup radioLoginGroup = new ButtonGroup();
 	
-	public Login(){
-			
+	public LoginGUI(){
+		createGUI();
+	}
+	
+	public void createGUI(){
+
 		this.setTitle("Login");
 		this.setResizable(false);
 		this.setSize(700, 400);
@@ -84,18 +91,18 @@ public class Login extends JFrame {
 		
 	}
 	
-	public JTextField getLoginId() {
+	public static JTextField getLoginId() {
 		return textUserId;
 	}
 	
-	public String getUserType(){
+	public static String getUserType(){
 		
 		if(radioStudentLogin.isSelected()){
-			return "Student login";
+			return "student login";
 		}else if(radioLecturerLogin.isSelected()){
-			return "Lecturer login";
+			return "lecturer login";
 		}else if(radioAdminLogin.isSelected()){
-			return "Admin login";
+			return "admin login";
 		}else{
 			return null;
 		}
@@ -108,13 +115,13 @@ public class Login extends JFrame {
 	
 	public void showValidationError(String errorMessage){
 		
-		JOptionPane.showMessageDialog(Login.this, errorMessage, "Correct input error", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(LoginGUI.this, errorMessage, "Correct input error", JOptionPane.ERROR_MESSAGE);
 		
 	}
 	
 	public void showLoginError(String errorMessage){
 		
-		JOptionPane.showMessageDialog(Login.this, errorMessage, "Correct login error", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(LoginGUI.this, errorMessage, "Correct login error", JOptionPane.ERROR_MESSAGE);
 		
 	}
 	

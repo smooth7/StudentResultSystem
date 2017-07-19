@@ -3,7 +3,11 @@ package controllers.studentsHome;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import views.CheckGrade;
+import controllers.studentcheckGradeInfo.CheckGradeListener;
+import controllers.viewNotifications.ViewNotificationsListener;
+import views.StudentCheckGradeInfoGUI;
+
+//Listeners for the buttons in the AdminHome page
 
 public class StudentHomeListeners {
 
@@ -11,7 +15,7 @@ public class StudentHomeListeners {
 		
 		public void actionPerformed(ActionEvent e){
 			
-			new CheckGrade();
+			CheckGradeListener.createGUI();
 			
 		}
 
@@ -22,23 +26,11 @@ public class StudentHomeListeners {
 		
 		public void actionPerformed(ActionEvent e){
 			
-			
-			
-		}
-
-
-	}
-
-	public class RequestRemarkListener implements ActionListener{
-		
-		public void actionPerformed(ActionEvent e){
-			
-			
+			ViewNotificationsListener.createGUI();
 			
 		}
 
 
 	}
 
-	
 }

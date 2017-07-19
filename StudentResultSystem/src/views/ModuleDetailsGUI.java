@@ -8,7 +8,7 @@ import java.awt.List;
 import controllers.moduleDetailsEntry.SubmitModuleListener;
 import java.util.ArrayList;
 
-public class ModuleDetailsEntry extends JFrame {
+public class ModuleDetailsGUI extends JFrame {
 
 	JButton buttonSubmit;
 	JTextField textModuleName, textModuleDepartment;
@@ -18,8 +18,12 @@ public class ModuleDetailsEntry extends JFrame {
 	JList<String> studentInfoJList;
 	JScrollPane scroller;
 	
-	public ModuleDetailsEntry(ArrayList<String> lecturerInfoList, ArrayList<String> studentInfoList){
-			
+	public ModuleDetailsGUI(ArrayList<String> lecturerInfoList, ArrayList<String> studentInfoList){
+		createGUI(lecturerInfoList, studentInfoList);
+	}
+	
+	public void createGUI(ArrayList<String> lecturerInfoList, ArrayList<String> studentInfoList){
+		
 		// Define the size of the frame
 		this.setSize(900, 1000);
 		this.setLocationRelativeTo(null);
@@ -124,6 +128,7 @@ public class ModuleDetailsEntry extends JFrame {
 		return comboModuleLecturer;
 	}
 	
+	//returns students offering a module
 	public ArrayList<String> getStudentList() {
 
 		ArrayList<String> studentsList = new ArrayList<>();
@@ -135,14 +140,14 @@ public class ModuleDetailsEntry extends JFrame {
 	}
 	
 	public void showInsertSuccess(){
-		JOptionPane.showMessageDialog(ModuleDetailsEntry.this, "You have successfully inserted module details", "Information", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(ModuleDetailsGUI.this, "You have successfully inserted module details", "Information", JOptionPane.INFORMATION_MESSAGE);
 		textModuleName.setText("");
 		textModuleDepartment.setText("");
 	}
 	
 	public void showValidationError(String errorMessage){
 			
-		JOptionPane.showMessageDialog(ModuleDetailsEntry.this, errorMessage, "Correct input error", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(ModuleDetailsGUI.this, errorMessage, "Correct input error", JOptionPane.ERROR_MESSAGE);
 		
 	}
 	

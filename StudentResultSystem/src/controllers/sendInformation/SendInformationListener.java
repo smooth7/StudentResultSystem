@@ -1,33 +1,34 @@
-package controllers.sendNotifications;
+package controllers.sendInformation;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import model.SendNotificationsDAO;
+import model.SendInformationDAO;
 import views.SendNotificationsGUI;
 
-public class SendNotificationListener implements ActionListener{
+public class SendInformationListener implements ActionListener{
 	
 	static SendNotificationsGUI sendNotificationsGUI;
-	SendNotificationsDAO sendNotificationsDAO = new SendNotificationsDAO();
+	SendInformationDAO sendNotificationsDAO = new SendInformationDAO();
 	
 	ArrayList<String> notificationList = new ArrayList<String>();
 	
-	String notificationMessage = "";
+	String informationMessage = "";
 	boolean lecturersSelectionStatus = false;
 	boolean studentsSelectionStatus = false;
 	
 	
 	public void actionPerformed(ActionEvent e){
 		
-		notificationMessage = sendNotificationsGUI.getMessage().getText();
+		informationMessage = sendNotificationsGUI.getMessage().getText();
 		lecturersSelectionStatus = sendNotificationsGUI.getLecturersSelection();
 		studentsSelectionStatus = sendNotificationsGUI.getStudentsSelection();
 		
+		//Get list of those to receive notification
 		getObserverList();
 		
-		NotificationSubject notificationSubject = new NotificationSubject();
+		InformationSubject notificationSubject = new InformationSubject();
 		
 		//for adding observer
 		for (String notificationInfo : notificationList) {
@@ -35,15 +36,16 @@ public class SendNotificationListener implements ActionListener{
 			String notificationId = notificationInfoParts[0];
 			String notificationUserType = notificationInfoParts[1];
 
-			new NotificationObserver(notificationSubject, notificationId, notificationUserType);
+			new InformationObserver(notificationSubject, notificationId, notificationUserType);
 			
 		}
 		
-		notificationSubject.setMessage(notificationMessage);
+		notificationSubject.setMessage(informationMessage);
 		notificationList.removeAll(notificationList);
 		sendNotificationsGUI.showUpdateSuccess();
 	}
 	
+	//Get list of those to receive notification
 	public ArrayList<String> getObserverList(){
 
 		if (lecturersSelectionStatus == true){

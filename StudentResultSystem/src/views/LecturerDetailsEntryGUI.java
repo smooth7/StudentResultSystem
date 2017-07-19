@@ -6,14 +6,19 @@ import java.awt.GridLayout;
 
 import controllers.lecturerDetailsEntry.SubmitLecturerListener;
 
-public class LecturerDetailsEntry extends JFrame {
+public class LecturerDetailsEntryGUI extends JFrame {
 
 	JButton buttonSubmit;
 	JTextField textLecturerName, textLecturerDepartment;
 	JLabel labelLecturerName, labelLecturerDepartment;
 	Font font = new Font("Helvetica", Font.PLAIN, 22);
 	
-	public LecturerDetailsEntry(){
+	public LecturerDetailsEntryGUI(){
+		
+		createGUI();
+	}
+	
+	public void createGUI(){
 		
 		this.setSize(700, 400);
 		this.setResizable(false);
@@ -72,14 +77,14 @@ public class LecturerDetailsEntry extends JFrame {
 	}
 	
 	public void showInsertSuccess(){
-		JOptionPane.showMessageDialog(LecturerDetailsEntry.this, "You have successfully inserted lecturer details", "Information", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(LecturerDetailsEntryGUI.this, "You have successfully inserted lecturer details", "Information", JOptionPane.INFORMATION_MESSAGE);
 		textLecturerName.setText("");
 		textLecturerDepartment.setText("");
 	}
 	
 	public void showValidationError(String errorMessage){
 		
-		JOptionPane.showMessageDialog(LecturerDetailsEntry.this, errorMessage, "Correct input error", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(LecturerDetailsEntryGUI.this, errorMessage, "Correct input error", JOptionPane.ERROR_MESSAGE);
 		
 	}
 	

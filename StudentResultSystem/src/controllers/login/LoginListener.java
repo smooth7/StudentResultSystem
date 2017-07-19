@@ -3,12 +3,12 @@ package controllers.login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import views.Login;
-import views.StudentHome;
+import views.LoginGUI;
+import views.StudentHomeGUI;
 
 public class LoginListener implements ActionListener{
 	
-	static Login userLoginEntry;
+	static LoginGUI userLoginEntry;
 	
 	String loginId = "";
 	String loginPassword = "";
@@ -16,11 +16,13 @@ public class LoginListener implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e){
 		
-		loginId = userLoginEntry.getLoginId().getText();
+		loginId = LoginGUI.getLoginId().getText();
 		loginPassword = userLoginEntry.getLoginPassword().getText();
-		loginUserType = userLoginEntry.getUserType();
+		loginUserType = LoginGUI.getUserType();
 		
 		if(validateDetails() == true){
+			
+			//checks login details
 			
 			LoginFactory loginFactoryObj = new LoginFactory();
 			ILogin iLoginObj = loginFactoryObj.getUserTypeInstance(loginUserType);
@@ -51,7 +53,7 @@ public class LoginListener implements ActionListener{
 	
 	public static void createGUI() {
 
-		userLoginEntry = new Login();
+		userLoginEntry = new LoginGUI();
 		
 	}
 

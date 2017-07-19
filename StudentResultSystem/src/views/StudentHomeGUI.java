@@ -6,15 +6,18 @@ import controllers.studentsHome.StudentHomeListeners;
 import java.awt.Font;
 import java.awt.GridLayout;
 
-public class StudentHome extends JFrame {
+public class StudentHomeGUI extends JFrame {
 
-	JButton buttonCheckGrades, buttonRequestRemark, buttonViewNotifications;
-	JLabel labelSpace;
+	JButton buttonCheckGrades, buttonViewNotifications;
 	
 	StudentHomeListeners studentHomeListeners = new StudentHomeListeners();
 	
-	public StudentHome(){
-			
+	public StudentHomeGUI(){
+		createGUI();
+	}
+	
+	public void createGUI(){
+		
 		this.setTitle("Student Home Page");
 		this.setResizable(false);
 		this.setSize(700, 400);
@@ -44,17 +47,8 @@ public class StudentHome extends JFrame {
 		buttonNotificationPanel.add(buttonViewNotifications);
 		jPanelObject.add(buttonNotificationPanel);
 		
-		JPanel buttonRequestRemarkPanel = new JPanel();
-		buttonRequestRemark = new JButton("Request for Module remark");
-		buttonRequestRemark.setFont(font);
-		StudentHomeListeners.RequestRemarkListener requestRemarkListener = studentHomeListeners.new RequestRemarkListener();
-		buttonRequestRemark.addActionListener(requestRemarkListener);
-		buttonRequestRemarkPanel.add(buttonRequestRemark);
-		jPanelObject.add(buttonRequestRemarkPanel);
-		
 		this.add(jPanelObject);
 		this.setVisible(true);
 		
 	}
-	
 }

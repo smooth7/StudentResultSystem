@@ -14,44 +14,31 @@ import java.util.ArrayList;
 
 import javax.swing.border.*;
 
-public class Marks extends JFrame {
+public class MarksGUI extends JFrame {
 
-	JButton buttonSubmit;
+	JButton buttonSubmit, buttonRetrieveStudents;
 	JComboBox<String> comboStudentInfo, comboModuleInfo;
 	JTextField textStudentScore;
 	JLabel labelStudentInfo, labelScore, labelModuleInfo;
-	JRadioButton radioMarkScore, radioRemarkScore;
 	
-	public Marks(ArrayList<String> moduleInfoList){
-			
+	Font font = new Font("Helvetica", Font.PLAIN, 22);
+	
+	public MarksGUI(ArrayList<String> moduleInfoList){
+		createGUI(moduleInfoList);
+	}
+	
+	public void createGUI(ArrayList<String> moduleInfoList){
+		
 		// Define the size of the frame
 		this.setResizable(false);
 		this.setSize(800, 600);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setTitle("Enter student marks");
-				
-		Font font = new Font("Helvetica", Font.PLAIN, 22);
 		
 		JPanel jPanelObject = new JPanel();
 		
 		jPanelObject.setLayout(new GridLayout(0,1,2,2));
-		
-		radioMarkScore = new JRadioButton("Enter score for a marked module");
-		radioMarkScore.setFont(font);
-		radioRemarkScore = new JRadioButton("Enter score for a remarked module");
-		radioRemarkScore.setFont(font);
-		
-		ButtonGroup radioScoreGroup = new ButtonGroup();
-		radioScoreGroup.add(radioMarkScore);
-		radioScoreGroup.add(radioRemarkScore);
-		
-		JPanel radioScorePanel = new JPanel();
-		radioScorePanel.add(radioMarkScore);
-		radioScorePanel.add(radioRemarkScore);
-		
-		radioMarkScore.setSelected(true);
-		jPanelObject.add(radioScorePanel);
 		
 		JPanel userModuleInfoPanel = new JPanel();
 		
@@ -66,9 +53,17 @@ public class Marks extends JFrame {
 		
 		jPanelObject.add(userModuleInfoPanel);
 		
+		JPanel retrieveStudentsPanel = new JPanel();
+		buttonRetrieveStudents = new JButton("Retrieve Students");
+		buttonRetrieveStudents.setFont(font);
+		SubmitMarkListener retrieveListener = new SubmitMarkListener();
+		buttonRetrieveStudents.addActionListener(retrieveListener);
+		retrieveStudentsPanel.add(buttonRetrieveStudents);
+		jPanelObject.add(retrieveStudentsPanel);
+		
 		JPanel studentInfoPanel = new JPanel();
 		
-		labelStudentInfo = new JLabel("    Student Information");
+		labelStudentInfo = new JLabel("    Student Id");
 		labelStudentInfo.setFont(font);
 		studentInfoPanel.add(labelStudentInfo);
 		
@@ -92,7 +87,6 @@ public class Marks extends JFrame {
 		jPanelObject.add(studentScorePanel);
 		
 		JPanel submitPanel = new JPanel();
-		
 		buttonSubmit = new JButton("Submit");
 		buttonSubmit.setFont(font);
 		SubmitMarkListener submitMarkListener = new SubmitMarkListener();
@@ -105,23 +99,66 @@ public class Marks extends JFrame {
 		
 	}
 	
-	public String getMarkAction(){
-		if(radioMarkScore.isSelected()){
-			return "Mark";
-		}else if(radioMarkScore.isSelected()){
-			return "Remark";
-		}else{
-			return null;
-		}
-	}
-	
 	public JButton getSubmitButton(){
 		return buttonSubmit;
 		
 	}
 	
+	//to insert unmarked students for selected module into comboStudentInfo
+	public void insertunmarkedStudents(ArrayList<String> unmarkedStudentList){
+		
+		if(unmarkedStudentList.isEmpty()){
+			comboStudentInfo.removeAllItems();
+			showValidationError("There are no unmarked students for selected module.");
+		}else{
+			
+			String[] listUnmarkedStudent = unmarkedStudentList.toArray(new String[unmarkedStudentList.size()] );
+			
+			comboStudentInfo.removeAllItems();
+			
+			for (String unmarkedStudent : listUnmarkedStudent) {
+				comboStudentInfo.addItem(unmarkedStudent);
+			}
+			
+			comboStudentInfo.setSelectedIndex(0);
+			
+		}
+		
+	}
+	
+	public JComboBox<String> getStudentId(){
+		return comboStudentInfo;
+		
+	}
+	
+	public JTextField getStudentScore(){
+		return textStudentScore;
+		
+	}
+	
+	//returns object of buttonRetrieveStudents variable
+	public JButton getRetrieveButton(){
+		return buttonRetrieveStudents;
+		
+	}
+	
+	//returns object of comboModuleInfo variable
 	public JComboBox<String> getChangeModuleCombo(){
 		return comboModuleInfo;
+		
+	}
+	
+	public void showInsertSuccess(){
+		JOptionPane.showMessageDialog(MarksGUI.this, "You have successfully inserted the student score", "Information", JOptionPane.INFORMATION_MESSAGE);
+		
+		textStudentScore.setText("");
+		comboStudentInfo.removeItemAt(comboStudentInfo.getSelectedIndex());
+		
+	}
+	
+	public void showValidationError(String errorMessage){
+		
+		JOptionPane.showMessageDialog(MarksGUI.this, errorMessage, "Correct input error", JOptionPane.ERROR_MESSAGE);
 		
 	}
 }

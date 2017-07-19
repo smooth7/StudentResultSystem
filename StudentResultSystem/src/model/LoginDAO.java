@@ -6,8 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import connector.MySqlConnection;
+import modelInterfaces.ILoginDAO;
 
-public class LoginDAO {
+public class LoginDAO implements ILoginDAO {
 
 	MySqlConnection mySqlConnection = new MySqlConnection();
 	Connection connectionInstance = null;

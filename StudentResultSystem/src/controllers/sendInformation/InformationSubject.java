@@ -1,16 +1,14 @@
-package controllers.sendNotifications;
+package controllers.sendInformation;
 
 import java.util.ArrayList;
 
-public class NotificationSubject implements Subject {
+public class InformationSubject implements Subject {
 
 	private ArrayList<Observer> observers;
 	
 	private String message;
-	private String userType;
-	private String userId;
 	
-	public NotificationSubject(){
+	public InformationSubject(){
 		observers = new ArrayList<Observer>();
 	}
 	
@@ -28,7 +26,7 @@ public class NotificationSubject implements Subject {
 	public void notifyObserver() {
 
 		for(Observer observer : observers){
-			observer.update(message);
+			observer.updateNotice(message);
 			
 		}
 		

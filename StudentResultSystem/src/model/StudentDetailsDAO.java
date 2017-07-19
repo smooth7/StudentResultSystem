@@ -5,8 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import connector.MySqlConnection;
+import modelInterfaces.IStudentDetailsInput;
 
-public class StudentDetailsDAO {
+public class StudentDetailsDAO implements IStudentDetailsInput {
 	
 	public boolean insertStudentDetails(String studentName, String studentDepartment){
 		

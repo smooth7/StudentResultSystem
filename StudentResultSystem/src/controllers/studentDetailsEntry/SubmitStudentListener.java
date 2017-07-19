@@ -4,11 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.StudentDetailsDAO;
-import views.StudentDetailsEntry;
+import views.StudentDetailsGUI;
 
 public class SubmitStudentListener implements ActionListener{
 	
-		static StudentDetailsEntry studentDetailsEntry;
+		static StudentDetailsGUI studentDetailsEntry;
 		StudentDetailsDAO studentDetailsDAO = new StudentDetailsDAO();
 		
 		String studentName = "";
@@ -20,6 +20,7 @@ public class SubmitStudentListener implements ActionListener{
 			studentDepartment = studentDetailsEntry.getStudentDepartment().getText();
 			
 			if(validateDetails() == true){
+				//insert student details
 				if (studentDetailsDAO.insertStudentDetails(studentName, studentDepartment) == true){
 					studentDetailsEntry.showInsertSuccess();
 				}
@@ -44,6 +45,6 @@ public class SubmitStudentListener implements ActionListener{
 		}
 		
 		public static void createGUI(){
-			studentDetailsEntry = new StudentDetailsEntry();
+			studentDetailsEntry = new StudentDetailsGUI();
 		}
 	}

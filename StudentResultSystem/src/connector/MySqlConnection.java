@@ -4,6 +4,8 @@ import java.sql.DriverManager;
 
 public class MySqlConnection {
 	
+	//To get JDBC connection to MYSQL database with singleton pattern
+	
 	private Connection myConnectionInstance = null;
 	
 		public Connection getConnection(){

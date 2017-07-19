@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import controllers.sendNotifications.SendNotificationListener;
+import controllers.sendInformation.SendInformationListener;
 
 public class SendNotificationsGUI extends JFrame {
 
@@ -23,7 +23,11 @@ public class SendNotificationsGUI extends JFrame {
 	JButton buttonSubmit;
 	
 	public SendNotificationsGUI(){
-		
+		createGUI();
+	}
+	
+	public void createGUI(){
+
 		this.setSize(900, 600);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -61,7 +65,7 @@ public class SendNotificationsGUI extends JFrame {
 		JPanel submitPanel = new JPanel();
 		buttonSubmit = new JButton("Send Notification");
 		buttonSubmit.setFont(font);
-		SendNotificationListener sendNotificationListener = new SendNotificationListener();
+		SendInformationListener sendNotificationListener = new SendInformationListener();
 		buttonSubmit.addActionListener(sendNotificationListener);
 		submitPanel.add(buttonSubmit);
 		jPanelObject.add(submitPanel);
@@ -71,6 +75,7 @@ public class SendNotificationsGUI extends JFrame {
 		
 	}
 	
+	//determines whether or not notification should be sent to students
 	public boolean getStudentsSelection(){
 		
 		if(allStudentsList.isSelected()){
@@ -81,6 +86,7 @@ public class SendNotificationsGUI extends JFrame {
 		
 	}
 	
+	//determines whether or not notification should be sent to lecturers
 	public boolean getLecturersSelection(){
 		
 		if(allLecturersList.isSelected()){

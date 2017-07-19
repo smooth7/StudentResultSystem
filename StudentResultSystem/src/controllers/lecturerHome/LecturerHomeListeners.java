@@ -4,6 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import controllers.marks.SubmitMarkListener;
+import controllers.viewNotifications.ViewNotificationsListener;
+
+
+//Listeners for the buttons in the LecturerHome page
 
 public class LecturerHomeListeners {
 
@@ -22,7 +26,7 @@ public class LecturerHomeListeners {
 		
 		public void actionPerformed(ActionEvent e){
 			
-			
+			ViewNotificationsListener.createGUI();
 			
 		}
 

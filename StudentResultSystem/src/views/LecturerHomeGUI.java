@@ -5,15 +5,19 @@ import java.awt.GridLayout;
 
 import controllers.lecturerHome.LecturerHomeListeners;
 
-public class LecturerHome extends JFrame {
+public class LecturerHomeGUI extends JFrame {
 
 	LecturerHomeListeners lecturerHomeListeners = new LecturerHomeListeners();
 	
 	JButton buttonEnterScores, buttonViewNotifications;
 	JLabel labelSpace;
 	
-	public LecturerHome(){
-			
+	public LecturerHomeGUI(){
+		createGUI();
+	}
+	
+	public void createGUI(){
+		
 		this.setTitle("Lecturer Home Page");
 		this.setResizable(false);
 		this.setSize(700, 400);

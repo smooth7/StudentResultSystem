@@ -8,8 +8,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import connector.MySqlConnection;
+import modelInterfaces.ISendInformationDAO;
+import modelInterfaces.ISendInformationInput;
 
-public class SendNotificationsDAO {
+public class SendInformationDAO implements ISendInformationInput, ISendInformationDAO {
 
 	public ArrayList<String> getLecturerDetails(){
 		
@@ -78,7 +80,7 @@ public class SendNotificationsDAO {
 		return studentInfoList;
 	}
 	
-	public void updateNotification(String message, String userType, String userId){
+	public void updateAnnouncement(String message, String userType, String userId, String sender){
 			
 			MySqlConnection mySqlConnection = new MySqlConnection();
 			Connection connectionInstance = null;
@@ -93,7 +95,7 @@ public class SendNotificationsDAO {
 			PreparedStatement preparedInsertNotification = connectionInstance.prepareStatement(insertNotificationQuery);
 			preparedInsertNotification.setString(1, userType);
 			preparedInsertNotification.setString(2, userId);
-			preparedInsertNotification.setString(3, "Admin");
+			preparedInsertNotification.setString(3, sender);
 			preparedInsertNotification.setString(4, message);
 		      
 			preparedInsertNotification.executeUpdate();

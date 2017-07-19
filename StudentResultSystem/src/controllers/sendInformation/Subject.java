@@ -1,4 +1,4 @@
-package controllers.sendNotifications;
+package controllers.sendInformation;
 
 public interface Subject {
 

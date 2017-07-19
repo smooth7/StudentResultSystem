@@ -12,14 +12,18 @@ import controllers.studentDetailsEntry.SubmitStudentListener;
 import java.text.NumberFormat;
 import javax.swing.border.*;
 
-public class StudentDetailsEntry extends JFrame {
+public class StudentDetailsGUI extends JFrame {
 
 	JButton buttonSubmit;
 	JTextField textStudentName, textStudentDepartment;
 	JLabel labelStudentName, labelStudentDepartment;
 	
-	public StudentDetailsEntry(){
-			
+	public StudentDetailsGUI(){
+		createGUI();
+	}
+	
+	public void createGUI(){
+		
 		// Define the size of the frame
 		this.setSize(700, 400);
 		this.setLocationRelativeTo(null);
@@ -77,14 +81,14 @@ public class StudentDetailsEntry extends JFrame {
 	}
 	
 	public void showInsertSuccess(){
-		JOptionPane.showMessageDialog(StudentDetailsEntry.this, "You have successfully inserted student details", "Information", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(StudentDetailsGUI.this, "You have successfully inserted student details", "Information", JOptionPane.INFORMATION_MESSAGE);
 		textStudentName.setText("");
 		textStudentDepartment.setText("");
 	}
 
 	public void showValidationError(String errorMessage){
 		
-		JOptionPane.showMessageDialog(StudentDetailsEntry.this, errorMessage, "Correct input error", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(StudentDetailsGUI.this, errorMessage, "Correct input error", JOptionPane.ERROR_MESSAGE);
 		
 	}
 	

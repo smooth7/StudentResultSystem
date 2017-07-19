@@ -6,15 +6,21 @@ import controllers.adminHome.AdminHomeListeners;
 import java.awt.Font;
 import java.awt.GridLayout;
 
-public class AdminHome extends JFrame {
+public class AdminHomeGUI extends JFrame {
 
-	JButton buttonRegStudents, buttonRegLecturers, buttonRegModules, buttonViewNotifications, buttonSendNotifications, buttonConfirmRequest, buttonRequestRemark;
+	JButton buttonRegStudents, buttonRegLecturers, buttonRegModules, buttonSendNotifications;
 	JLabel labelSpace;
 	
+	//listener instance for button
 	AdminHomeListeners adminHomeListeners = new AdminHomeListeners();
 	
-	public AdminHome(){
+	public AdminHomeGUI(){
 			
+		createGUI();
+	}
+	
+	public void createGUI(){
+		
 		this.setTitle("Admin Home Page");
 		this.setResizable(false);
 		this.setSize(700, 700);
@@ -25,6 +31,7 @@ public class AdminHome extends JFrame {
 				
 		JPanel jPanelObject = new JPanel();
 		
+		//defines layout
 		jPanelObject.setLayout(new GridLayout(0,1,2,2));
 		
 		JPanel buttonRegStudentPanel = new JPanel();
@@ -58,30 +65,6 @@ public class AdminHome extends JFrame {
 		buttonSendNotifications.addActionListener(sendNotificationsListener);
 		btnSendNotificationPanel.add(buttonSendNotifications);
 		jPanelObject.add(btnSendNotificationPanel);
-		
-		JPanel btnViewNotificationPanel = new JPanel();
-		buttonViewNotifications = new JButton("View Notifications");
-		buttonViewNotifications.setFont(font);
-		AdminHomeListeners.ViewNotificationsListener viewNotificationsListener = adminHomeListeners.new ViewNotificationsListener();
-		buttonViewNotifications.addActionListener(viewNotificationsListener);
-		btnViewNotificationPanel.add(buttonViewNotifications);
-		jPanelObject.add(btnViewNotificationPanel);
-		
-		JPanel buttonConfirmRequestPanel = new JPanel();
-		buttonConfirmRequest = new JButton("Confirm student remark request");
-		buttonConfirmRequest.setFont(font);
-		AdminHomeListeners.ConfirmRequestListener confirmRequestListener = adminHomeListeners.new ConfirmRequestListener();
-		buttonConfirmRequest.addActionListener(confirmRequestListener);
-		buttonConfirmRequestPanel.add(buttonConfirmRequest);
-		jPanelObject.add(buttonConfirmRequestPanel);
-		
-		JPanel buttonRequestRemarkPanel = new JPanel();
-		buttonRequestRemark = new JButton("Request for Module remark");
-		buttonRequestRemark.setFont(font);
-		AdminHomeListeners.RequestRemarkListener requestRemarkListener = adminHomeListeners.new RequestRemarkListener();
-		buttonRequestRemark.addActionListener(requestRemarkListener);
-		buttonRequestRemarkPanel.add(buttonRequestRemark);
-		jPanelObject.add(buttonRequestRemarkPanel);
 		
 		this.add(jPanelObject);
 		this.setVisible(true);

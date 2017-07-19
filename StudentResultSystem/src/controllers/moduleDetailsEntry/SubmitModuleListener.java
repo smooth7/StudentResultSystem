@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import model.ModuleDetailsDAO;
-import views.ModuleDetailsEntry;
+import views.ModuleDetailsGUI;
 
 public class SubmitModuleListener implements ActionListener{
 	
-	static ModuleDetailsEntry moduleDetailsEntry;
+	static ModuleDetailsGUI moduleDetailsEntry;
 	static ModuleDetailsDAO moduleDetailsDAO = new ModuleDetailsDAO();
 	
 	String moduleDepartment = "";
@@ -30,25 +30,28 @@ public class SubmitModuleListener implements ActionListener{
 		
 		if (validateDetails() == true){
 		
-		String[] moduleLecturerInfoParts = moduleLecturerInfo.split("; Id: ");
-		String moduleLecturerId = moduleLecturerInfoParts[1];
-		
-		ArrayList<String> moduleStudentIdList  = new ArrayList<String>();
-		for (String studentInfo : moduleStudentList) {
-			String[] moduleStudentInfoParts = studentInfo.split("; Id: ");
-			String moduleStudentId = moduleStudentInfoParts[1];
-			moduleStudentIdList.add(moduleStudentId);
-		}
-		
-		if (moduleDetailsDAO.insertModuleDetails(moduleName, moduleDepartment, moduleLecturerId, moduleYear) == true){
+			String[] moduleLecturerInfoParts = moduleLecturerInfo.split("; Id: ");
+			String moduleLecturerId = moduleLecturerInfoParts[1];
 			
-			String moduleId = moduleDetailsDAO.getCurrentModuleId();
-			
-			if(moduleDetailsDAO.insertModuleStudents(moduleId, moduleLecturerId, moduleYear, moduleStudentIdList) == true){
-				moduleDetailsEntry.showInsertSuccess();
+			//Gets students IDs offering a module
+			ArrayList<String> moduleStudentIdList  = new ArrayList<String>();
+			for (String studentInfo : moduleStudentList) {
+				String[] moduleStudentInfoParts = studentInfo.split("; Id: ");
+				String moduleStudentId = moduleStudentInfoParts[1];
+				moduleStudentIdList.add(moduleStudentId);
 			}
 			
-		}
+			//insert module details into module details table
+			if (moduleDetailsDAO.insertModuleDetails(moduleName, moduleDepartment, moduleLecturerId, moduleYear) == true){
+				
+				String moduleId = moduleDetailsDAO.getCurrentModuleId();
+				
+				//insert module details int result table
+				if(moduleDetailsDAO.insertModuleStudents(moduleId, moduleName, moduleLecturerId, moduleYear, moduleStudentIdList) == true){
+					moduleDetailsEntry.showInsertSuccess();
+				}
+				
+			}
 		
 	}
 	}
@@ -80,6 +83,6 @@ public class SubmitModuleListener implements ActionListener{
 		ArrayList<String> lecturerInfoList = moduleDetailsDAO.getLecturerDetails();
 		ArrayList<String> studentInfoList = moduleDetailsDAO.getStudentDetails();
 		
-		moduleDetailsEntry = new ModuleDetailsEntry(lecturerInfoList, studentInfoList);
+		moduleDetailsEntry = new ModuleDetailsGUI(lecturerInfoList, studentInfoList);
 	}
 	}

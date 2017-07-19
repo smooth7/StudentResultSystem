@@ -8,8 +8,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import connector.MySqlConnection;
+import modelInterfaces.IModuleDetailsDAO;
+import modelInterfaces.IModuleDetailsInput;
 
-public class ModuleDetailsDAO {
+public class ModuleDetailsDAO implements IModuleDetailsDAO, IModuleDetailsInput {
 
 	
 	public boolean insertModuleDetails(String moduleName, String moduleDepartment, String moduleLecturerId, String moduleYear){
@@ -53,7 +55,7 @@ public class ModuleDetailsDAO {
 		return false;
 	}
 	
-	public boolean insertModuleStudents(String moduleId, String moduleLecturerId, String moduleYear, ArrayList<String>moduleStudentIdList){
+	public boolean insertModuleStudents(String moduleId, String moduleName, String moduleLecturerId, String moduleYear, ArrayList<String>moduleStudentIdList){
 		
 		MySqlConnection mySqlConnection = new MySqlConnection();
 		Connection connectionInstance = null;
@@ -66,11 +68,12 @@ public class ModuleDetailsDAO {
 		try{
 		
 			String insertModuleQuery = "insert into result "
-				+ " (module_id, student_id, module_year, lecturer_id)"
-				+ " values (?, ?, ?, ?)";
+				+ " (module_id, moduleName, student_id, module_year, lecturer_id)"
+				+ " values (?, ?, ?, ?, ?)";
 		
 		PreparedStatement preparedInsertModule = connectionInstance.prepareStatement(insertModuleQuery);
 		preparedInsertModule.setString(1, moduleId);
+		preparedInsertModule.setString(1, moduleName);
 		preparedInsertModule.setString(2, studentId);
 		preparedInsertModule.setString(3, moduleYear);
 		preparedInsertModule.setString(4, moduleLecturerId);

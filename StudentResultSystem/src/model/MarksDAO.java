@@ -47,7 +47,6 @@ public class MarksDAO implements IMarksUpdate, IMarksDAO {
 		return moduleInfoList;
 	}
 	
-	//retrieve for a lecturer all unmarked students in a module
 	public ArrayList<String> retrieveUnmarkedStudentsRecord(String moduleId, String moduleYear, String lecturerId){
 		
 		MySqlConnection mySqlConnection = new MySqlConnection();

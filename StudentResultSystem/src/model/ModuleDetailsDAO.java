@@ -52,8 +52,17 @@ public class ModuleDetailsDAO implements IModuleDetailsDAO, IModuleDetailsInput 
 	     	  sqlException.printStackTrace();
 	       }
 	    }
+		
+		try{
+	          if(connectionInstance!=null)
+	         	 connectionInstance.close();
+	       }catch(SQLException sqlException){
+	     	  sqlException.printStackTrace();
+	       }
+		
 		return false;
 	}
+	
 	
 	public boolean insertModuleStudents(String moduleId, String moduleName, String moduleLecturerId, String moduleYear, ArrayList<String>moduleStudentIdList){
 		
@@ -68,15 +77,15 @@ public class ModuleDetailsDAO implements IModuleDetailsDAO, IModuleDetailsInput 
 		try{
 		
 			String insertModuleQuery = "insert into result "
-				+ " (module_id, moduleName, student_id, module_year, lecturer_id)"
+				+ " (module_id, module_name, student_id, module_year, lecturer_id)"
 				+ " values (?, ?, ?, ?, ?)";
 		
 		PreparedStatement preparedInsertModule = connectionInstance.prepareStatement(insertModuleQuery);
 		preparedInsertModule.setString(1, moduleId);
-		preparedInsertModule.setString(1, moduleName);
-		preparedInsertModule.setString(2, studentId);
-		preparedInsertModule.setString(3, moduleYear);
-		preparedInsertModule.setString(4, moduleLecturerId);
+		preparedInsertModule.setString(2, moduleName);
+		preparedInsertModule.setString(3, studentId);
+		preparedInsertModule.setString(4, moduleYear);
+		preparedInsertModule.setString(5, moduleLecturerId);
 	      
 		numbeOfRows = preparedInsertModule.executeUpdate();
 		
@@ -86,20 +95,14 @@ public class ModuleDetailsDAO implements IModuleDetailsDAO, IModuleDetailsInput 
 		sqlException.printStackTrace();
    }catch(Exception exception){
 	   exception.printStackTrace();
-   }finally{
-	      try{
-	          if(connectionInstance!=null)
-	         	 connectionInstance.close();
-	       }catch(SQLException sqlException){
-	     	  sqlException.printStackTrace();
-	       }
-	    }
-}
-		if(numbeOfRows>0){
-			return true;
-		}
+   }
 		
-		return false;
+	}
+	if(numbeOfRows>0){
+		return true;
+	}
+	
+	return false;
 	}
 	
 	

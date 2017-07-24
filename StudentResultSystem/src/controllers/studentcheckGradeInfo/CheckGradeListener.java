@@ -14,10 +14,11 @@ public class CheckGradeListener implements ActionListener, ICheckGradeListener{
 	int score = 0;
 	static String scoreMessage = "";
 
+	static MarksDAO marksDAO = new MarksDAO();
+	static StudentCheckGradeInfoGUI studentCheckGrade;
+	
 	public void actionPerformed(ActionEvent e){
 		
-		MarksDAO marksDAO = new MarksDAO();
-		StudentCheckGradeInfoGUI studentCheckGrade = new StudentCheckGradeInfoGUI(null);
 		String studentId = LoginGUI.getLoginId().getText();
 		
 		studentId = LoginGUI.getLoginId().getText();
@@ -83,7 +84,7 @@ public class CheckGradeListener implements ActionListener, ICheckGradeListener{
 		
 		ArrayList<String> studentScoreList = marksDAO.getStudentModuleList(studentId);
 		
-		new StudentCheckGradeInfoGUI(studentScoreList);
+		studentCheckGrade = new StudentCheckGradeInfoGUI(studentScoreList);
 		
 	}
 

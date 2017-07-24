@@ -39,21 +39,20 @@ public class SubmitModuleListener implements ActionListener{
 				String[] moduleStudentInfoParts = studentInfo.split("; Id: ");
 				String moduleStudentId = moduleStudentInfoParts[1];
 				moduleStudentIdList.add(moduleStudentId);
+				
 			}
-			
-			//insert module details into module details table
-			if (moduleDetailsDAO.insertModuleDetails(moduleName, moduleDepartment, moduleLecturerId, moduleYear) == true){
-				
-				String moduleId = moduleDetailsDAO.getCurrentModuleId();
-				
-				//insert module details int result table
-				if(moduleDetailsDAO.insertModuleStudents(moduleId, moduleName, moduleLecturerId, moduleYear, moduleStudentIdList) == true){
-					moduleDetailsEntry.showInsertSuccess();
+				//insert module details into module details table
+				if (moduleDetailsDAO.insertModuleDetails(moduleName, moduleDepartment, moduleLecturerId, moduleYear) == true){
+					
+					String moduleId = moduleDetailsDAO.getCurrentModuleId();
+					
+					//insert module details int result table
+					if(moduleDetailsDAO.insertModuleStudents(moduleId, moduleName, moduleLecturerId, moduleYear, moduleStudentIdList) == true){
+						moduleDetailsEntry.showInsertSuccess();
+					}
 				}
-				
-			}
 		
-	}
+		}
 	}
 	
 	

@@ -6,14 +6,14 @@ import java.awt.GridLayout;
 
 import controllers.lecturerDetailsEntry.SubmitLecturerListener;
 
-public class LecturerDetailsEntryGUI extends JFrame {
+public class LecturerInfoDetailEntryGUI extends JFrame {
 
 	JButton buttonSubmit;
-	JTextField textLecturerName, textLecturerDepartment;
+	JTextField textLecturerName, textLecturerDepartmentInput;
 	JLabel labelLecturerName, labelLecturerDepartment;
 	Font font = new Font("Helvetica", Font.PLAIN, 22);
 	
-	public LecturerDetailsEntryGUI(){
+	public LecturerInfoDetailEntryGUI(){
 		
 		createGUI();
 	}
@@ -47,9 +47,9 @@ public class LecturerDetailsEntryGUI extends JFrame {
 		labelLecturerDepartment.setFont(font);
 		lecturerDepartmentPanel.add(labelLecturerDepartment);
 		
-		textLecturerDepartment = new JTextField("", 15);
-		textLecturerDepartment.setFont(font);
-		lecturerDepartmentPanel.add(textLecturerDepartment);
+		textLecturerDepartmentInput = new JTextField("", 15);
+		textLecturerDepartmentInput.setFont(font);
+		lecturerDepartmentPanel.add(textLecturerDepartmentInput);
 		
 		jPanelObject.add(lecturerDepartmentPanel);
 		
@@ -73,18 +73,18 @@ public class LecturerDetailsEntryGUI extends JFrame {
 	}
 
 	public JTextField getLecturerDepartment() {
-		return textLecturerDepartment;
+		return textLecturerDepartmentInput;
 	}
 	
 	public void showInsertSuccess(){
-		JOptionPane.showMessageDialog(LecturerDetailsEntryGUI.this, "You have successfully inserted lecturer details", "Information", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(LecturerInfoDetailEntryGUI.this, "You have successfully inserted lecturer details", "Information", JOptionPane.INFORMATION_MESSAGE);
 		textLecturerName.setText("");
-		textLecturerDepartment.setText("");
+		textLecturerDepartmentInput.setText("");
 	}
 	
 	public void showValidationError(String errorMessage){
 		
-		JOptionPane.showMessageDialog(LecturerDetailsEntryGUI.this, errorMessage, "Correct input error", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(LecturerInfoDetailEntryGUI.this, errorMessage, "Correct input error", JOptionPane.ERROR_MESSAGE);
 		
 	}
 	

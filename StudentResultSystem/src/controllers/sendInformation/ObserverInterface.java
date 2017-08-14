@@ -1,6 +1,6 @@
 package controllers.sendInformation;
 
-public interface Observer {
+public interface ObserverInterface {
 
 	public void updateNotice(String message);
 	

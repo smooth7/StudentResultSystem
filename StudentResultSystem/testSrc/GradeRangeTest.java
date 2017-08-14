@@ -26,9 +26,9 @@ public class GradeRangeTest {
 		String expectedUnMarkedResult = "Sorry, the result for this module is not yet out";
 		String expectedOutOfRangeResult = "Invalid entry";
 		
-		assertEquals(expectedUnMarkedResult, CheckGradeListener.getGrade(inputUnmarkedValue));
-		assertEquals(expectedOutOfRangeResult, CheckGradeListener.getGrade(inputHighValue));
-		assertEquals(expectedOutOfRangeResult, CheckGradeListener.getGrade(inputLowValue));
+		assertEquals(expectedUnMarkedResult, CheckGradeListener.computeGrade(inputUnmarkedValue));
+		assertEquals(expectedOutOfRangeResult, CheckGradeListener.computeGrade(inputHighValue));
+		assertEquals(expectedOutOfRangeResult, CheckGradeListener.computeGrade(inputLowValue));
 		
 	}
 

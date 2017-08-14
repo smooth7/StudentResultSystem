@@ -2,30 +2,30 @@ package controllers.sendInformation;
 
 import java.util.ArrayList;
 
-public class InformationSubject implements Subject {
+public class InformationSubject implements SubjectInterface {
 
-	private ArrayList<Observer> observers;
+	private ArrayList<ObserverInterface> observers;
 	
 	private String message;
 	
 	public InformationSubject(){
-		observers = new ArrayList<Observer>();
+		observers = new ArrayList<ObserverInterface>();
 	}
 	
 	@Override
-	public void addObserver(Observer newObserver) {
+	public void addObserver(ObserverInterface newObserver) {
 		observers.add(newObserver);
 	}
 
 	@Override
-	public void removeObserver(Observer observer) {
+	public void removeObserver(ObserverInterface observer) {
 		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void notifyObserver() {
 
-		for(Observer observer : observers){
+		for(ObserverInterface observer : observers){
 			observer.updateNotice(message);
 			
 		}

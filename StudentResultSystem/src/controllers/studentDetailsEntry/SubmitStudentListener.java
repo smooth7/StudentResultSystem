@@ -4,11 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.StudentDetailsDAO;
-import views.StudentDetailsGUI;
+import views.StudentInfoDetailEntryGUI;
 
 public class SubmitStudentListener implements ActionListener{
 	
-		static StudentDetailsGUI studentDetailsEntry;
+		static StudentInfoDetailEntryGUI studentDetailsEntry;
 		StudentDetailsDAO studentDetailsDAO = new StudentDetailsDAO();
 		
 		String studentName = "";
@@ -45,6 +45,6 @@ public class SubmitStudentListener implements ActionListener{
 		}
 		
 		public static void createGUI(){
-			studentDetailsEntry = new StudentDetailsGUI();
+			studentDetailsEntry = new StudentInfoDetailEntryGUI();
 		}
 	}

@@ -4,13 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import model.SendInformationDAO;
-import views.SendNotificationsGUI;
+import model.SendCommunicationDAO;
+import views.SendMessageGUI;
 
 public class SendInformationListener implements ActionListener{
 	
-	static SendNotificationsGUI sendNotificationsGUI;
-	SendInformationDAO sendNotificationsDAO = new SendInformationDAO();
+	static SendMessageGUI sendNotificationsGUI;
+	SendCommunicationDAO sendNotificationsDAO = new SendCommunicationDAO();
 	
 	ArrayList<String> notificationList = new ArrayList<String>();
 	
@@ -36,7 +36,7 @@ public class SendInformationListener implements ActionListener{
 			String notificationId = notificationInfoParts[0];
 			String notificationUserType = notificationInfoParts[1];
 
-			new InformationObserver(notificationSubject, notificationId, notificationUserType);
+			new NewsObserver(notificationSubject, notificationId, notificationUserType);
 			
 		}
 		
@@ -73,7 +73,7 @@ public class SendInformationListener implements ActionListener{
 
 	public static void createGUI() {
 
-		sendNotificationsGUI = new SendNotificationsGUI();
+		sendNotificationsGUI = new SendMessageGUI();
 		
 	}
 

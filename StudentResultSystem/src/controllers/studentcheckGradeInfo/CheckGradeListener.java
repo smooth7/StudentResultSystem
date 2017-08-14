@@ -33,13 +33,13 @@ public class CheckGradeListener implements ActionListener, ICheckGradeListener{
 		
 		score = marksDAO.getStudentScore(studentId, moduleId, moduleYear);
 		
-		studentCheckGrade.displayResult(getGrade(score));
+		studentCheckGrade.displayResult(computeGrade(score));
 		
 		
 	}
 
 	//returns student grade
-	public static String getGrade(int score) {
+	public static String computeGrade(int score) {
 
 		if(score < -1){
 			scoreMessage = "Invalid entry";

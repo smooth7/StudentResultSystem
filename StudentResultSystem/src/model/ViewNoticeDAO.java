@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import connector.MySqlConnection;
 
-public class ViewInformationDAO {
+public class ViewNoticeDAO {
 
 public ArrayList<String> getNewsList(String loginId, String loginUserType){
 		

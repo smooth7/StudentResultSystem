@@ -7,16 +7,16 @@ import java.util.ArrayList;
 import javax.swing.JComboBox;
 
 import model.MarksDAO;
-import model.SendInformationDAO;
+import model.SendCommunicationDAO;
 import views.LoginGUI;
-import views.MarksGUI;
+import views.ScoresEntryGUI;
 import views.ModuleDetailsGUI;
 
 public class SubmitMarkListener implements ActionListener{
 	
 	static MarksDAO marksDAO = new MarksDAO();
-	static MarksGUI marks;
-	SendInformationDAO sendNotificationsDAO = new SendInformationDAO();
+	static ScoresEntryGUI marks;
+	SendCommunicationDAO sendNotificationsDAO = new SendCommunicationDAO();
 	static String lecturerId = LoginGUI.getLoginId().getText();
 	String moduleId = "";
 	String moduleYear = "";
@@ -47,7 +47,7 @@ public class SubmitMarkListener implements ActionListener{
 						
 						sendNotificationsDAO.updateAnnouncement(message, "student", studentId, "System");
 						
-						marks.showInsertSuccess();
+						marks.showUpdateSuccess();
 					}
 					
 				}
@@ -115,7 +115,7 @@ public class SubmitMarkListener implements ActionListener{
 		
 		ArrayList<String> moduleInfoList = marksDAO.getModuleDetails(lecturerId);
 		
-		marks = new MarksGUI(moduleInfoList);
+		marks = new ScoresEntryGUI(moduleInfoList);
 		
 	}
 	

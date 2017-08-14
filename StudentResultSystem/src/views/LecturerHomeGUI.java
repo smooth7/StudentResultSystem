@@ -42,7 +42,7 @@ public class LecturerHomeGUI extends JFrame {
 		JPanel buttonNotificationPanel = new JPanel();
 		buttonViewNotifications = new JButton("View Notifications");
 		buttonViewNotifications.setFont(font);
-		LecturerHomeListeners.NotificationsListener notificationsListener = lecturerHomeListeners.new NotificationsListener();
+		LecturerHomeListeners.AnnouncementListener notificationsListener = lecturerHomeListeners.new AnnouncementListener();
 		buttonViewNotifications.addActionListener(notificationsListener);
 		buttonNotificationPanel.add(buttonViewNotifications);
 		jPanelObject.add(buttonNotificationPanel);

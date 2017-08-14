@@ -5,7 +5,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
-public class ViewInformationGUI extends JFrame {
+public class ViewCommunicationGUI extends JFrame {
 
 	DefaultListModel<String> notificationsDefaultList = new DefaultListModel<String>();
 	JList<String> notificationsJList;
@@ -14,7 +14,7 @@ public class ViewInformationGUI extends JFrame {
 	
 	static Font font = new Font("Helvetica", Font.PLAIN, 22);
 	
-	public ViewInformationGUI(){
+	public ViewCommunicationGUI(){
 		createGUI();
 	}
 	

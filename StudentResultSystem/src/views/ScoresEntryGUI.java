@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 import javax.swing.border.*;
 
-public class MarksGUI extends JFrame {
+public class ScoresEntryGUI extends JFrame {
 
 	JButton buttonSubmit, buttonRetrieveStudents;
 	JComboBox<String> comboStudentInfo, comboModuleInfo;
@@ -23,7 +23,7 @@ public class MarksGUI extends JFrame {
 	
 	Font font = new Font("Helvetica", Font.PLAIN, 22);
 	
-	public MarksGUI(ArrayList<String> moduleInfoList){
+	public ScoresEntryGUI(ArrayList<String> moduleInfoList){
 		createGUI(moduleInfoList);
 	}
 	
@@ -148,8 +148,8 @@ public class MarksGUI extends JFrame {
 		
 	}
 	
-	public void showInsertSuccess(){
-		JOptionPane.showMessageDialog(MarksGUI.this, "You have successfully inserted the student score", "Information", JOptionPane.INFORMATION_MESSAGE);
+	public void showUpdateSuccess(){
+		JOptionPane.showMessageDialog(ScoresEntryGUI.this, "You have successfully inserted the student score", "Information", JOptionPane.INFORMATION_MESSAGE);
 		
 		textStudentScore.setText("");
 		comboStudentInfo.removeItemAt(comboStudentInfo.getSelectedIndex());
@@ -158,7 +158,7 @@ public class MarksGUI extends JFrame {
 	
 	public void showValidationError(String errorMessage){
 		
-		JOptionPane.showMessageDialog(MarksGUI.this, errorMessage, "Correct input error", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(ScoresEntryGUI.this, errorMessage, "Correct input error", JOptionPane.ERROR_MESSAGE);
 		
 	}
 }

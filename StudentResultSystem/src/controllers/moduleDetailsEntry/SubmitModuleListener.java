@@ -48,7 +48,7 @@ public class SubmitModuleListener implements ActionListener{
 					
 					//insert module details int result table
 					if(moduleDetailsDAO.insertModuleStudents(moduleId, moduleName, moduleLecturerId, moduleYear, moduleStudentIdList) == true){
-						moduleDetailsEntry.showInsertSuccess();
+						moduleDetailsEntry.showUpdateSuccess();
 					}
 				}
 		

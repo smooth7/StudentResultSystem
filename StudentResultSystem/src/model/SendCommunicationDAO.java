@@ -11,7 +11,7 @@ import connector.MySqlConnection;
 import modelInterfaces.ISendInformationDAO;
 import modelInterfaces.ISendInformationInput;
 
-public class SendInformationDAO implements ISendInformationInput, ISendInformationDAO {
+public class SendCommunicationDAO implements ISendInformationInput, ISendInformationDAO {
 
 	public ArrayList<String> getLecturerDetails(){
 		

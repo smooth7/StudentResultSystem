@@ -2,14 +2,14 @@ package controllers.viewNotifications;
 
 import java.util.ArrayList;
 
-import model.ViewInformationDAO;
+import model.ViewNoticeDAO;
 import views.LoginGUI;
-import views.ViewInformationGUI;
+import views.ViewCommunicationGUI;
 
 public class ViewNotificationsListener {
 	
-	static ViewInformationGUI viewCommunication;
-	static ViewInformationDAO notificationDAO = new ViewInformationDAO();
+	static ViewCommunicationGUI viewCommunication;
+	static ViewNoticeDAO notificationDAO = new ViewNoticeDAO();
 	
 	static String loginId = LoginGUI.getLoginId().getText();
 	static String loginUser[] = LoginGUI.getUserType().split(" login");
@@ -19,9 +19,9 @@ public class ViewNotificationsListener {
 		//get list of all notifications for a particular user
 		ArrayList<String> messageList = notificationDAO.getNewsList(loginId, loginUser[0]);
 		
-		viewCommunication = new ViewInformationGUI();
+		viewCommunication = new ViewCommunicationGUI();
 		
-		ViewInformationGUI.insertMessageList(messageList);
+		ViewCommunicationGUI.insertMessageList(messageList);
 	}
 
 }

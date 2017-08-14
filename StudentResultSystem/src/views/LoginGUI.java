@@ -11,7 +11,7 @@ public class LoginGUI extends JFrame {
 	JButton buttonSubmit;
 	JTextField textPassword;
 	static JTextField textUserId;
-	JLabel labelPassword, labelUserId;
+	JLabel labelPasswordDisplay, labelUserId;
 	static JRadioButton radioStudentLogin;
 	static JRadioButton radioLecturerLogin;
 	static JRadioButton radioAdminLogin;
@@ -68,9 +68,9 @@ public class LoginGUI extends JFrame {
 		
 		JPanel userPassword = new JPanel();
 		
-		labelPassword = new JLabel("    Enter Password:");
-		labelPassword.setFont(font);
-		userPassword.add(labelPassword);
+		labelPasswordDisplay = new JLabel("    Enter Password:");
+		labelPasswordDisplay.setFont(font);
+		userPassword.add(labelPasswordDisplay);
 		
 		textPassword = new JTextField("", 15);
 		textPassword.setFont(font);

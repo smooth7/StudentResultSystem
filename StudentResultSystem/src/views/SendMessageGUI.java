@@ -14,7 +14,7 @@ import javax.swing.JTextArea;
 
 import controllers.sendInformation.SendInformationListener;
 
-public class SendNotificationsGUI extends JFrame {
+public class SendMessageGUI extends JFrame {
 
 	JTextArea textNotificationMessage;
 	JLabel labelRecipients;
@@ -22,7 +22,7 @@ public class SendNotificationsGUI extends JFrame {
 	JScrollPane scroller;
 	JButton buttonSubmit;
 	
-	public SendNotificationsGUI(){
+	public SendMessageGUI(){
 		createGUI();
 	}
 	
@@ -103,12 +103,12 @@ public class SendNotificationsGUI extends JFrame {
 	
 	public void showValidationError(String errorMessage){
 		
-		JOptionPane.showMessageDialog(SendNotificationsGUI.this, errorMessage, "Correct input error", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(SendMessageGUI.this, errorMessage, "Correct input error", JOptionPane.ERROR_MESSAGE);
 		
 	}
 	
 	public void showUpdateSuccess(){
-		JOptionPane.showMessageDialog(SendNotificationsGUI.this, "Notifications have been sent to all those concerned", "Information", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(SendMessageGUI.this, "Notifications have been sent to all those concerned", "Information", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 }

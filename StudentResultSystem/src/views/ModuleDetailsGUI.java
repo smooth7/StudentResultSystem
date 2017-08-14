@@ -139,7 +139,7 @@ public class ModuleDetailsGUI extends JFrame {
 		return studentsList;
 	}
 	
-	public void showInsertSuccess(){
+	public void showUpdateSuccess(){
 		JOptionPane.showMessageDialog(ModuleDetailsGUI.this, "You have successfully inserted module details", "Information", JOptionPane.INFORMATION_MESSAGE);
 		textModuleName.setText("");
 		textModuleDepartment.setText("");

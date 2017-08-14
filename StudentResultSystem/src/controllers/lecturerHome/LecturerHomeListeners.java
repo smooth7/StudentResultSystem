@@ -22,7 +22,7 @@ public class LecturerHomeListeners {
 
 	}
 
-	public class NotificationsListener implements ActionListener{
+	public class AnnouncementListener implements ActionListener{
 		
 		public void actionPerformed(ActionEvent e){
 			
